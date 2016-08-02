@@ -32,16 +32,39 @@ class Tree
     @children = []
   end
 
+
+  puts (depth_first_search(target_key));
   ##
   # Searches through tree for a single node whose key is equal to
   # the +target_key+ param. Looks through nodes in a depth-first order,
   # by following each path as deep as it can before backtracking.
   # Returns nil if no such node is found.
   def depth_first_search(target_key)
-    nil
-  end
+    @stack = []
 
+    if (my_tree.key == target_key) {
+      return my_tree;
+    }
+  else {
+    stack.push(my_tree.children)
+  }
+
+  while stack != nil {
+  current_element = stack.pop
+  }
+  if (current_element.key == target_key){
+    return current_element
+  }
+else {
+  stack.push(current_element.children)
+}
 end
+
+if (stack ==nil) {
+  return nil 
+}
+end
+
 
 
 my_tree = Tree.new('Q')
