@@ -1,13 +1,10 @@
 ##
 # This class represents a tree
 # where each node has an array of children.
-
 class Tree
-
   ##
   # reads the key of the tree's root
   attr_reader :key
-
   ## 
   # sets the key of the tree's root node
   # unless intended new key is nil
@@ -18,12 +15,9 @@ class Tree
     end
     @key
   end
-
   ##
   # sets or reads the array of children for this instance
   attr_accessor :children
-
-
   ##
   # Creates a new tree with the root node key specified by 
   # the +key+ param as the @key for the instance
@@ -31,55 +25,43 @@ class Tree
     @key = key
     @children = []
   end
-
-  puts (breadth_first_search(target_key));
   ##
   # Searches through all nodes of the tree, spreading 
   # outward from the root. Looks for any node with key equal
   # to the +target_key+ param. Returns nil if no such node is found.
+
   def breadth_first_search(target_key)
-    my_tree = self
-    @queue = []
-    if (my_tree.key == target_key) {
-      return my_tree
-    }
-  else { 
-    queue.push(my_tree.children)
-
-  }
-end
-
-  while queue != nil {
-    queue.pop(current_element);
-  }
-
-end
-
-else {
-  return nil 
-}
-
+    # check if key == target_key 
+    if key == target_key
+    # if equal, return my_tree  
+      return self
+    # else add my_tree.children to the queue
+    else
+      children.each do |child_node|
+        queue.push child_node
+    end
   end
-
+p queue
+  # while queue is not empty
+  while !queue.empty?
+  # get first element in queue (current_element) and remove it from the queue
+    current_node = queue.shift
+  # check current_element.key == target_key
+  if current_node.key == target_key
+  # if yes return current_element
+    return current_node
+  # if no add current_element.children to the queue
+  else
+    current_node.children.each do |child_node|
+      queue.push child_node
+     end
+  end
+p queue 
 end
-
-# check 
-#   if my_tree.key == target_key
-#     if (equal) { return my_tree } 
-# else 
-#   add my_tree.children to the queue
-# while queue is not empty
-#   get first element in queue(current_element) and remove it from the queue (pop)
-#   check current_element.key == target_key
-#   if yes return current_element
-#   if no add current_element.children to the queue
-
-# end
-
-# if (queue  is empty) {
-#   return nil not found
-# }
-
+# if (queue  is empty) return nil not found
+nil
+end
+end
 
 my_tree = Tree.new('A')
 b_node = Tree.new('B')
