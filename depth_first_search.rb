@@ -40,32 +40,37 @@ class Tree
   # by following each path as deep as it can before backtracking.
   # Returns nil if no such node is found.
   def depth_first_search(target_key)
-    my_tree = self
-    @stack = []
-
-    if (my_tree.key == target_key) {
-      return my_tree;
-    }
-  else {
-    stack.push(my_tree.children)
-  }
-
-  while stack != nil {
-  current_element = stack.pop
-  }
-  if (current_element.key == target_key){
-    return current_element
-  }
-else {
-  stack.push(current_element.children)
-}
+  # check if key == target_key 
+    if key == target_key
+    # if equal, return my_tree  
+      return self
+    # else add my_tree.children to the queue
+    else
+      children.each do |child_node|
+        queue.push child_node
+    end
+  end
+p queue
+  # while queue is not empty
+  while !queue.empty?
+  # get first element in queue (current_element) and remove it from the queue
+    current_node = queue.shift
+  # check current_element.key == target_key
+  if current_node.key == target_key
+  # if yes return current_element
+    return current_node
+  # if no add current_element.children to the queue
+  else
+    current_node.children.each do |child_node|
+      queue.push child_node
+     end
+  end
+p queue 
 end
-
-if (stack ==nil) {
-  return nil 
-}
+# if (queue  is empty) return nil not found
+nil
 end
-
+end
 
 
 my_tree = Tree.new('Q')
