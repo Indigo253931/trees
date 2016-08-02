@@ -40,6 +40,7 @@ class Tree
   # by following each path as deep as it can before backtracking.
   # Returns nil if no such node is found.
   def depth_first_search(target_key)
+    my_tree = self
     @stack = []
 
     if (my_tree.key == target_key) {

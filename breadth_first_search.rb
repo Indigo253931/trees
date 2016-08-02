@@ -38,6 +38,7 @@ class Tree
   # outward from the root. Looks for any node with key equal
   # to the +target_key+ param. Returns nil if no such node is found.
   def breadth_first_search(target_key)
+    my_tree = self
     @queue = []
     if (my_tree.key == target_key) {
       return my_tree
